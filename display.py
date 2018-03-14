@@ -1,5 +1,6 @@
+# Modified from https://github.com/nilesr/braille-art
 from PIL import Image
-import random, sys
+import os, random, sys
 
 def img_average(x1, y1, x2, y2, img):
     average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
@@ -17,13 +18,15 @@ def convert_index(x):
     if x == 6: return 5
     if x == 7: return 7
 
-def draw(img):
+def draw(img, post_info):
     start = 0x2800
     char_width = 10
     char_height = char_width * 2
-    dither, sensitivity = 5, 0.8
+    dither, sensitivity = 5, 0.6
     char_width_divided, char_height_divided = round(char_width / 2), round(char_height / 4)
     match = lambda a, b: a < b if "--invert" in sys.argv else a > b
+    print('username: ' + post_info['username'])
+    print('\033[4m' + post_info['site_url'] + '\033[0m \n')
     for y in range(0, img.height - char_height - 1, char_height):
         for x in range(0, img.width - char_width - 1, char_width):
             byte, index = 0x0, 0
@@ -35,19 +38,22 @@ def draw(img):
                     index += 1
             print(chr(start + byte), end = "")
         print()
+    print('Likes: ' + post_info['likes'])
+    print(post_info['caption'])
+    print('-------------------\n')
 
 def resize_image(img):
-    basewidth = 350
+    basewidth = 550
     wpercent = (basewidth/float(img.size[0]))
     hsize = int((float(img.size[1])*float(wpercent)))
     img = img.resize((basewidth, hsize), Image.ANTIALIAS)
     return img
 
-def main():
-    filename = "a.jpg"
-    img = Image.open(filename)
-    draw(resize_image(img))
-
+def display_to_terminal(posts_info):
+    file_list = os.listdir('./images/')
+    for filename in file_list:
+        img = Image.open('./images/' + filename)
+        draw(resize_image(img), posts_info[filename])
 
 if __name__ == '__main__':
-    main()
+    display_to_terminal(posts_info)
