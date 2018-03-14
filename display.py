@@ -1,4 +1,5 @@
 # Modified from https://github.com/nilesr/braille-art
+
 from PIL import Image
 import os, random, sys
 
@@ -11,7 +12,7 @@ def img_average(x1, y1, x2, y2, img):
     return average(ret)
 
 def convert_index(x):
-    if x < 3: return x
+    if x <  3: return x
     if x == 3: return 6
     if x == 4: return 3
     if x == 5: return 4
