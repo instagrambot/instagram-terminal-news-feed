@@ -43,18 +43,12 @@ def draw(img, post_info):
     print(post_info['caption'])
     print('-------------------\n')
 
-def resize_image(img):
-    basewidth = 550
-    wpercent = (basewidth/float(img.size[0]))
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((basewidth, hsize), Image.ANTIALIAS)
-    return img
-
 def display_to_terminal(posts_info):
     file_list = os.listdir('./images/')
     for filename in file_list:
-        img = Image.open('./images/' + filename)
-        draw(resize_image(img), posts_info[filename])
+        img_path = './images/' + filename
+        img = Image.open(img_path)
+        draw(img, posts_info[filename])
 
 if __name__ == '__main__':
     display_to_terminal(posts_info)

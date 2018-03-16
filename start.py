@@ -34,7 +34,7 @@ def fetch_news_feed(session):
                 'username': username,
                 'caption': item['caption']['text'] if item['caption'] else "",
                 'image_url': item['image_versions2']['candidates'][0]['url'],
-                'likes': str(item['like_count']) if item['like_count'] else 0,
+                'likes': str(item['like_count']) if item['like_count'] else '0',
                 'site_url': 'https://www.instagram.com/p/' + item['code'] + '/?taken-by=' + username
             }
         except KeyError:
@@ -70,7 +70,10 @@ def get_login_session(credential):
     session.headers.update({'X-CSRFToken': req.cookies['csrftoken']})
     login_data = credential
     res = session.post('https://www.instagram.com/accounts/login/ajax/', data=login_data, allow_redirects=True)
-    return session, json.loads(res.text)['authenticated']
+    res_text = json.loads(res.text);
+    if res_text['status'] == 'fail':
+        return None, res_text
+    return session, res_text
 
 def login(credential):
     if credential:
@@ -81,8 +84,11 @@ def login(credential):
     while True:
         user = input('Username: ')
         pwd = getpass.getpass(prompt='Password: ')
-        session, authenticated = get_login_session({"username": user, "password": pwd})
-        if not authenticated:
+        session, res = get_login_session({"username": user, "password": pwd})
+        if res['status'] == 'fail':
+            print(res['message'])
+            exit()
+        if not res['authenticated']:
             print("Bad username or password")
         else:
             break
