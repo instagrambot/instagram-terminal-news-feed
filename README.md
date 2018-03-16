@@ -12,7 +12,7 @@ To be honest, I did this just for pure fun.:wink:
 
 ## Getting Started
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 python3 start.py
 ```
 Just that easy!! :sunglasses:
