@@ -4,9 +4,9 @@
 </p>
 
 ## What is this?
-Sometimes checking your instagram during work is kind of strang, so why not check your instagram inside your terminal? :smiling_imp:
+Sometimes checking your instagram during work is kind of strang, so why not check your instagram inside your terminal?
 
-OK... I know checking this during work is still strange :expressionless: ...
+OK... I know checking this during work is still strange... :expressionless:
 
 To be honest, I did this just for pure fun.:wink:
 
