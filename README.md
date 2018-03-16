@@ -5,8 +5,10 @@
 
 ## What is this?
 Sometimes checking your instagram during work is kind of strang, so...why not check your instagram inside your terminal? :smiling_imp:
-OK checking this during work is still strange :expressionless: ...
-To be honest, I did this just for pure fun.
+
+OK... I know checking this during work is still strange :expressionless: ...
+
+To be honest, I did this just for pure fun.:wink:
 
 ## Getting Started
 ```
@@ -16,8 +18,7 @@ python3 start.py
 Just that easy!! :sunglasses:
 
 ## Note
-For the username and password part, I promise you it is safe even if you save it. The username/password will only be saved locally in the file 
-called `credential.json`. You can also just don't save it which is the default option. 
+For the username and password part, I promise you it is safe even if you save it. The username/password will only be saved locally in the file called `credential.json`. You can also just don't save it which is the default option. 
 
 You can check this out in the source code. :innocent:
 
