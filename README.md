@@ -13,7 +13,10 @@ To be honest, I did this just for pure fun.:wink:
 ## Getting Started
 ```
 pip3 install -r requirements.txt
+# If you don't want color
 python3 start.py
+# If you want color
+python3 start.py --color
 ```
 Just that easy!! :sunglasses:
 
@@ -29,3 +32,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 * Thanks to [racega](https://github.com/rarcega/instagram-scraper) for some of the login functions
 * Thanks to [nilesr](https://github.com/nilesr/braille-art) for the printing to ascii part
+* Thanks to [hit9](https://github.com/hit9/img2txt) for the color printing to ascii part
