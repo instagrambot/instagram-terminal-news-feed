@@ -1,3 +1,4 @@
+import argparse
 import getpass
 import json
 import os
@@ -99,11 +100,14 @@ def login(credential):
     return session
 
 def main():
+    parser = argparse.ArgumentParser(description='Display the image with color!')
+    parser.add_argument('--color', action='store_true', help='color output')
+    display_color = parser.parse_args().color
     credential = get_credential()
     session = login(credential)
     posts_info = fetch_news_feed(session)
     save_image(posts_info, session)
-    display_to_terminal(posts_info)
+    display_to_terminal(posts_info, display_color)
     remove_image_dir()
 
 if __name__ == '__main__':

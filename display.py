@@ -1,7 +1,9 @@
 # Modified from https://github.com/nilesr/braille-art
 
 from PIL import Image
+from color.img2txt import draw_with_color
 import os, random, sys
+import subprocess
 
 def img_average(x1, y1, x2, y2, img):
     average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
@@ -19,7 +21,8 @@ def convert_index(x):
     if x == 6: return 5
     if x == 7: return 7
 
-def draw(img, post_info):
+def draw(img_path, post_info):
+    img = Image.open(img_path)
     start = 0x2800
     char_width = 10
     char_height = char_width * 2
@@ -43,12 +46,14 @@ def draw(img, post_info):
     print(post_info['caption'])
     print('-------------------\n')
 
-def display_to_terminal(posts_info):
+def display_to_terminal(posts_info, display_color):
     file_list = os.listdir('./images/')
     for filename in file_list:
         img_path = './images/' + filename
-        img = Image.open(img_path)
-        draw(img, posts_info[filename])
+        if display_color:
+            draw_with_color(img_path, posts_info[filename])
+        else:
+            draw(img_path, posts_info[filename])
 
 if __name__ == '__main__':
     display_to_terminal(posts_info)
