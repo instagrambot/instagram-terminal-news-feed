@@ -48,7 +48,7 @@ def draw_with_color(img_path, post_info):
     fontSize = 7
     bgcolor = None
     target_aspect_ratio = 0.5
-    img = load_and_resize_image(img_path, None, maxLen, target_aspect_ratio)
+    img = load_and_resize_image(img_path, bgcolor, maxLen, target_aspect_ratio)
     # get pixels
     pixel = img.load()
     print('username: ' + post_info['username'])
