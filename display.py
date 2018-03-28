@@ -4,6 +4,7 @@ from PIL import Image
 from color.img2txt import draw_with_color
 import os, random, sys
 import subprocess
+import time
 
 def img_average(x1, y1, x2, y2, img):
     average = lambda x: sum(x)/len(x) if len(x) > 0 else 0
@@ -52,6 +53,7 @@ def display_to_terminal(posts_info, display_color):
         img_path = './images/' + filename
         if display_color:
             draw_with_color(img_path, posts_info[filename])
+            time.sleep(1)
         else:
             draw(img_path, posts_info[filename])
 

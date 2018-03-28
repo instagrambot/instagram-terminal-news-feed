@@ -100,8 +100,8 @@ def login(credential):
     return session
 
 def main():
-    parser = argparse.ArgumentParser(description='Display the image with color!')
-    parser.add_argument('--color', action='store_true', help='color output')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--color', action='store_true', help='Display image with color')
     display_color = parser.parse_args().color
     credential = get_credential()
     session = login(credential)
