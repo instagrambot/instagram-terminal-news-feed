@@ -30,6 +30,8 @@ python3 start.py --color
 
 Just that easy!! :sunglasses:
 
+Please don’t forget to star this repo if you found it useful.
+
 ## Note
 For the username and password part, I promise you it is safe even if you save it. The username/password will only be saved locally in the file called `credential.json`. You can also just don't save it which is the default option. 
 
