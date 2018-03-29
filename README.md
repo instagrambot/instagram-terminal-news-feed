@@ -1,10 +1,10 @@
 # Instagram Terminal Feed
-### Without Color(Stealth Mode - Recommended using it during work:smirk:)
+#### Without Color (Stealth Mode - Recommended using it during work :smirk:)
 <p align="center">
 <img src="gifs/demo.gif">
 </p>
 
-### With Color
+#### With Color
 <p align="center">
 <img src="gifs/demo-color.gif">
 </p>
