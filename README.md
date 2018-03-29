@@ -1,19 +1,17 @@
 # Instagram Terminal Feed
-## Without Color(Stealth Mode - Recommended using it during work:smirk:)
+### Without Color(Stealth Mode - Recommended using it during work:smirk:)
 <p align="center">
 <img src="gifs/demo.gif">
 </p>
 
-## With Color
+### With Color
 <p align="center">
 <img src="gifs/demo-color.gif">
 </p>
 
 ## What is this?
 Sometimes checking your instagram during work is kind of strange, so why not check your instagram inside your terminal?
-
 OK... I know checking this during work is still strange... :expressionless:
-
 To be honest, I did this just for pure fun.:wink:
 
 ## Getting Started
