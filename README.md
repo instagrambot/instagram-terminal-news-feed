@@ -1,6 +1,12 @@
 # Instagram Terminal Feed
+## Without Color(Stealth Mode - Recommended using it during work:smirk:)
 <p align="center">
-<img src="demo.gif">
+<img src="gifs/demo.gif">
+</p>
+
+## With Color
+<p align="center">
+<img src="gifs/demo-color.gif">
 </p>
 
 ## What is this?
