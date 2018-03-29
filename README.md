@@ -15,13 +15,17 @@ OK... I know checking this during work is still strange... :expressionless:
 To be honest, I did this just for pure fun.:wink:
 
 ## Getting Started
-```
-pip3 install -r requirements.txt
-# If you don't want color
-python3 start.py
-# If you want color
-python3 start.py --color
-```
+#### Installation
+`pip3 install -r requirements.txt`
+
+After that just run:
+
+If you don't want color:
+`python3 start.py`
+
+If you want color:
+`python3 start.py --color`
+
 Just that easy!! :sunglasses:
 
 ## Note
