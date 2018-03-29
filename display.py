@@ -53,7 +53,7 @@ def display_to_terminal(posts_info, display_color):
         img_path = './images/' + filename
         if display_color:
             draw_with_color(img_path, posts_info[filename])
-            time.sleep(1)
+            time.sleep(2)
         else:
             draw(img_path, posts_info[filename])
 

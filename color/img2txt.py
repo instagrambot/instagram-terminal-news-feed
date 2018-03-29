@@ -48,7 +48,7 @@ def draw_with_color(img_path, post_info):
     maxLen = 100.0   # default maxlen: 100px
     fontSize = 7
     bgcolor = None
-    target_aspect_ratio = 0.5
+    target_aspect_ratio = 0.3
     img = load_and_resize_image(img_path, bgcolor, maxLen, target_aspect_ratio)
     # get pixels
     pixel = img.load()
