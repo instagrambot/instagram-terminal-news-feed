@@ -1,4 +1,4 @@
-from graphics_util import alpha_blend
+from color.graphics_util import alpha_blend
 
 
 def getANSIcolor_for_rgb(rgb):
