@@ -16,15 +16,17 @@ To be honest, I did this just for pure fun.:wink:
 
 ## Getting Started
 #### Installation
-`pip3 install -r requirements.txt`
+```
+pip3 install -r requirements.txt
+```
 
-After that just run:
-
-If you don't want color:
-`python3 start.py`
-
-If you want color:
-`python3 start.py --color`
+After pip installing run the below:
+```
+# Without Color
+python3 start.py
+# With Color
+python3 start.py --color
+```
 
 Just that easy!! :sunglasses:
 
