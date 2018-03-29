@@ -40,6 +40,6 @@ You can check this out in the source code. :innocent:
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-* Thanks to [racega](https://github.com/rarcega/instagram-scraper) for some of the login functions
+* Thanks to [racega](https://github.com/rarcega/instagram-scraper) for inspiring me for the login functions
 * Thanks to [nilesr](https://github.com/nilesr/braille-art) for the printing to ascii part
 * Thanks to [hit9](https://github.com/hit9/img2txt) for the color printing to ascii part
