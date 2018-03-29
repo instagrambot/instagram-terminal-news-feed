@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Modified from https://github.com/hit9/img2txt/blob/gh-pages/img2txt.py
 
 import sys
 import color.ansi
