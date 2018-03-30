@@ -12,7 +12,9 @@
 ## What is this?
 Sometimes checking your instagram during work is kind of strange, so why not check your instagram inside your terminal?
 OK... I know checking this during work is still strange... :expressionless:
-To be honest, I did this just for pure fun.:wink:
+To be honest, I did this just for pure fun.
+
+Please don’t forget to star this repo if you liked it!! :wink::wink:
 
 ## Getting Started
 #### Installation
@@ -29,8 +31,6 @@ python3 start.py --color
 ```
 
 Just that easy!! :sunglasses:
-
-Please don’t forget to star this repo if you liked it!!
 
 ## Note
 For the username and password part, I promise you it is safe even if you save it. The username/password will only be saved locally in the file called `credential.json`. You can also just don't save it which is the default option. 
