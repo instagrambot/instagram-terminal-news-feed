@@ -54,6 +54,8 @@ def save_image(posts_info, session):
                     f.write(chunk)
 
 def remove_image_dir():
+    if not os.path.isdir("./images"):
+        return
     file_list = os.listdir('./images/')
     for filename in file_list:
         os.remove('./images/' + filename)
@@ -69,8 +71,7 @@ def get_login_session(credential):
     session.headers.update({'Referer': 'https://www.instagram.com/'})
     req = session.get('https://www.instagram.com/')
     session.headers.update({'X-CSRFToken': req.cookies['csrftoken']})
-    login_data = credential
-    res = session.post('https://www.instagram.com/accounts/login/ajax/', data=login_data, allow_redirects=True)
+    res = session.post('https://www.instagram.com/accounts/login/ajax/', data=credential, allow_redirects=True)
     res_text = json.loads(res.text);
     if res_text['status'] == 'fail':
         return None, res_text
