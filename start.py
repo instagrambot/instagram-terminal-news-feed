@@ -105,10 +105,10 @@ def main():
     display_color = parser.parse_args().color
     credential = get_credential()
     session = login(credential)
+    remove_image_dir()
     posts_info = fetch_news_feed(session)
     save_image(posts_info, session)
     display_to_terminal(posts_info, display_color)
-    remove_image_dir()
 
 if __name__ == '__main__':
     main()
