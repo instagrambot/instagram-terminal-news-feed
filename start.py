@@ -72,10 +72,19 @@ def get_login_session(credential):
     req = session.get('https://www.instagram.com/')
     session.headers.update({'X-CSRFToken': req.cookies['csrftoken']})
     res = session.post('https://www.instagram.com/accounts/login/ajax/', data=credential, allow_redirects=True)
-    res_text = json.loads(res.text);
-    if res_text['status'] == 'fail':
-        return None, res_text
-    return session, res_text
+    login_response = json.loads(res.text);
+    if 'two_factor_required' in login_response and login_response['two_factor_required']:
+        identifier = login_response['two_factor_info']['two_factor_identifier']
+        username = credential['username']
+        verification_code = input('2FA Verification Code: ')
+        verification_data = {'username': username, 'verificationCode': verification_code, 'identifier': identifier}
+        two_factor_request = session.post('https://www.instagram.com/accounts/login/ajax/two_factor/', data=verification_data, allow_redirects=True)
+        two_factor_response = json.loads(two_factor_request.text)
+        if two_factor_response['authenticated']:
+            return session, two_factor_response
+        else:
+            return None, two_factor_text
+    return session, login_response
 
 def login(credential):
     if credential:
@@ -87,15 +96,15 @@ def login(credential):
         user = input('Username: ')
         pwd = getpass.getpass(prompt='Password: ')
         session, res = get_login_session({"username": user, "password": pwd})
+        if res['authenticated']:
+            break
+        if not res['authenticated']:
+            print("Bad username or password")
         if res['status'] == 'fail':
             print(res['message'])
             exit()
-        if not res['authenticated']:
-            print("Bad username or password")
-        else:
-            break
 
-    permission = input("save credentials(y/n)? [n]: ")
+    permission = input("save credentials(y/N)?: ")
     credential = {"username": user, "password": pwd}
     save_credentials(credential, permission == 'y')
     return session
