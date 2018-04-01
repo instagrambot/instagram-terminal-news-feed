@@ -45,18 +45,15 @@ def load_and_resize_image(imgname, antialias, maxLen, aspectRatio):
 
 
 def draw_with_color(img_path, post_info):
-    maxLen = 100.0   # default maxlen: 100px
-    fontSize = 7
-    bgcolor = None
-    target_aspect_ratio = 0.3
-    img = load_and_resize_image(img_path, bgcolor, maxLen, target_aspect_ratio)
+    maxLen, fontSize, target_aspect_ratio = 100.0, 7, 0.3
+    img = load_and_resize_image(img_path, None, maxLen, target_aspect_ratio)
     # get pixels
     pixel = img.load()
     print('username: ' + post_info['username'])
     print('\033[4m' + post_info['site_url'] + '\033[0m \n')
     width, height = img.size
     sys.stdout.write(
-        color.ansi.generate_ANSI_from_pixels(pixel, width, height, bgcolor)[0])
+        color.ansi.generate_ANSI_from_pixels(pixel, width, height, None)[0])
     sys.stdout.write("\x1b[0m\n")
     sys.stdout.flush()
     print('Likes: ' + post_info['likes'])

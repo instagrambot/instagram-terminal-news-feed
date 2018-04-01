@@ -32,6 +32,7 @@ def draw(img_path, post_info):
     match = lambda a, b: a < b if "--invert" in sys.argv else a > b
     print('username: ' + post_info['username'])
     print('\033[4m' + post_info['site_url'] + '\033[0m \n')
+    image = ""
     for y in range(0, img.height - char_height - 1, char_height):
         for x in range(0, img.width - char_width - 1, char_width):
             byte, index = 0x0, 0
@@ -41,8 +42,9 @@ def draw(img_path, post_info):
                     if match(avg + random.randint(-dither, dither), sensitivity * 0xFF):
                         byte += 2**convert_index(index)
                     index += 1
-            print(chr(start + byte), end = "")
-        print()
+            image += chr(start + byte)
+        image += '\n'
+    print(image)
     print('Likes: ' + post_info['likes'])
     print(post_info['caption'])
     print('-------------------\n')
