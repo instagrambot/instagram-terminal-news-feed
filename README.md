@@ -42,7 +42,7 @@ You can check this out in the source code. :innocent:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ## Acknowledgments
 * Thanks to [racega](https://github.com/rarcega/instagram-scraper) for inspiring me for the login functions
