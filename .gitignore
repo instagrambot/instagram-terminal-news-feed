@@ -2,4 +2,4 @@
 __pycache__
 *.pyc
 credential.json
-images/*.jpg
+images/

@@ -46,14 +46,14 @@ def save_image(posts_info, session):
     if not os.path.exists('images'):
         os.makedirs('images')
 
-    for key in posts_info.keys():
+    for key in posts_info:
         res = session.get(posts_info[key]['image_url'])
         with open('images/' + key, 'wb') as f:
             for chunk in res.iter_content(chunk_size=1024):
                 if chunk:
                     f.write(chunk)
 
-def remove_image_dir():
+def remove_images():
     if not os.path.isdir("./images"):
         return
     file_list = os.listdir('./images/')
@@ -71,19 +71,17 @@ def get_login_session(credential):
     session.headers.update({'Referer': 'https://www.instagram.com/'})
     req = session.get('https://www.instagram.com/')
     session.headers.update({'X-CSRFToken': req.cookies['csrftoken']})
-    res = session.post('https://www.instagram.com/accounts/login/ajax/', data=credential, allow_redirects=True)
-    login_response = json.loads(res.text);
+    login_response = session.post('https://www.instagram.com/accounts/login/ajax/', data=credential, allow_redirects=True).json()
     if 'two_factor_required' in login_response and login_response['two_factor_required']:
         identifier = login_response['two_factor_info']['two_factor_identifier']
         username = credential['username']
         verification_code = input('2FA Verification Code: ')
         verification_data = {'username': username, 'verificationCode': verification_code, 'identifier': identifier}
-        two_factor_request = session.post('https://www.instagram.com/accounts/login/ajax/two_factor/', data=verification_data, allow_redirects=True)
-        two_factor_response = json.loads(two_factor_request.text)
+        two_factor_response = session.post('https://www.instagram.com/accounts/login/ajax/two_factor/', data=verification_data, allow_redirects=True).json()
         if two_factor_response['authenticated']:
             return session, two_factor_response
         else:
-            return None, two_factor_text
+            return None, two_factor_response
     return session, login_response
 
 def login(credential):
@@ -115,7 +113,7 @@ def main():
     display_color = parser.parse_args().color
     credential = get_credential()
     session = login(credential)
-    remove_image_dir()
+    remove_images()
     posts_info = fetch_news_feed(session)
     save_image(posts_info, session)
     display_to_terminal(posts_info, display_color)
