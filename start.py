@@ -13,16 +13,16 @@ def get_credential():
             credential = json.load(json_data)
             return credential
     except FileNotFoundError:
-        print("credential.json file not found in current directory. Exiting.")
+        print('credential.json file not found in current directory. Exiting.')
         exit()
 
 def fetch_news_feed(session):
-    res = session.get("https://i.instagram.com/api/v1/feed/timeline/", headers={
-        'user-agent':"Instagram 10.3.2 (iPhone7,2; iPhone OS 9_3_3; en_US; en-US; scale=2.00; 750x1334) AppleWebKit/420+",
+    res = session.get('https://i.instagram.com/api/v1/feed/timeline/', headers={
+        'user-agent': 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G935T Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/51.0.2704.81 Mobile Safari/537.36 Instagram 8.4.0 Android (23/6.0.1; 560dpi; 1440x2560; samsung; SM-G935T; hero2qltetmo; qcom; en_US)',
         'cookie':'sessionid={0};'.format(session.cookies['sessionid'])
     })
     if res.status_code != 200:
-        print("ERROR: got "+str(res.status_code)+" when fetching!")
+        print('ERROR: got '+str(res.status_code)+' when fetching!')
         exit()
     res = json.loads(res.text)
     posts_info = {}
@@ -33,7 +33,7 @@ def fetch_news_feed(session):
         try:
             posts_info[key] = {
                 'username': username,
-                'caption': item['caption']['text'] if item['caption'] else "",
+                'caption': item['caption']['text'] if item['caption'] else '',
                 'image_url': item['image_versions2']['candidates'][0]['url'],
                 'likes': str(item['like_count']) if item['like_count'] else '0',
                 'site_url': 'https://www.instagram.com/p/' + item['code'] + '/?taken-by=' + username
@@ -54,7 +54,7 @@ def save_image(posts_info, session):
                     f.write(chunk)
 
 def remove_images():
-    if not os.path.isdir("./images"):
+    if not os.path.isdir('./images'):
         return
     file_list = os.listdir('./images/')
     for filename in file_list:
@@ -89,21 +89,21 @@ def login(credential):
         session, _ = get_login_session(credential)
         return session
 
-    user, pwd = "", ""
+    user, pwd = '', ''
     while True:
         user = input('Username: ')
         pwd = getpass.getpass(prompt='Password: ')
-        session, res = get_login_session({"username": user, "password": pwd})
+        session, res = get_login_session({'username': user, 'password': pwd})
         if res['authenticated']:
             break
         if not res['authenticated']:
-            print("Bad username or password")
+            print('Bad username or password')
         if res['status'] == 'fail':
             print(res['message'])
             exit()
 
-    permission = input("save credentials(y/N)?: ")
-    credential = {"username": user, "password": pwd}
+    permission = input('save credentials(y/N)?: ')
+    credential = {'username': user, 'password': pwd}
     save_credentials(credential, permission == 'y')
     return session
 
